@@ -42,7 +42,7 @@ class _NewsPageState extends State<NewsPage> {
                       width: 10,
                     ),
                     Text(
-                      '18 Oktober 2021',
+                      '18 October 2021',
                       style: authorDateArticle.copyWith(fontSize: 14),
                     )
                   ],
@@ -64,7 +64,7 @@ class _NewsPageState extends State<NewsPage> {
               style: titleHome,
             ),
           ),
-          //  ini merupakan widget TopHeadline untuk horizontal item
+          //  this was TopHeadline's widget for horizontal item
           Container(
             margin: EdgeInsets.all(20),
             height: 200,

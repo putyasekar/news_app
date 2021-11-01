@@ -6,7 +6,7 @@ import 'package:news_app/ui/detail_page.dart';
 import 'package:news_app/utils/theme.dart';
 
 class NewsHeadLine extends StatelessWidget {
-  // membuat var untuk menampung data daari model
+  // create var for containing data from model
   final Article article;
 
   NewsHeadLine({required this.article});
@@ -18,8 +18,8 @@ class NewsHeadLine extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                // article kiri = parameter dari detailPage
-                //article kanan = var dari Newsheaadline ini yg extends dari Model
+                // left article = parameter from detailPage
+                // right article = var from NewsHeadline, this what we extends from model
                 builder: (context) => DetailPage(
                       article: article,
                     )));

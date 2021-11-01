@@ -17,13 +17,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // buat variable untuk index halaman buttom nav
+  // create variable for index bottom navigation
   int _currentIndex = 0;
 
-  // buat var untuk controller pagenya
+  // create var for page controller
   late PageController _pageController;
 
-  // memangil model data dan data categories
+  // fetch model data and data categories
   News news = News();
   late List<Category> categories;
 

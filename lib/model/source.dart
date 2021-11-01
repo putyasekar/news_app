@@ -4,7 +4,7 @@ class Source {
     this.name,
   });
 
-  // berikan nullable karena datanya ada yang null
+  // mark data as nullable because it was null
   String? id;
   String? name;
 

@@ -1,11 +1,11 @@
-//style untuk padding atau margin
+// style for the padding & margin
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 double edgeHome = 30;
 double edgeDetail = 24;
 
-//style untuk font / textstyle
+// style for fonts
 TextStyle titleHome = GoogleFonts.poppins(
     color: Color(0xff091f33), fontWeight: FontWeight.w700, fontSize: 36);
 
