@@ -4,6 +4,8 @@ import 'package:news_app/model/category.dart';
 import 'package:news_app/utils/theme.dart';
 import 'package:news_app/widgets/news_item_horizontal.dart';
 
+import 'news_page_category.dart';
+
 class NewsPage extends StatefulWidget {
   final List<Article> articles;
   final List<Category> categories;
@@ -74,6 +76,36 @@ class _NewsPageState extends State<NewsPage> {
                 pageSnapping: true,
                 itemBuilder: (context, index) {
                   return NewsHeadLine(article: widget.articles[index]);
+                }),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              'Category',
+              style: titleArticle.copyWith(fontSize: 18),
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            height: 70,
+            child: ListView.builder(
+                itemCount: widget.categories.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsPageCategory()));
+                    },
+                  );
                 }),
           )
         ],
