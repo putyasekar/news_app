@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:news_app/model/articles.dart';
 import 'package:news_app/model/category.dart';
 import 'package:news_app/utils/theme.dart';
+import 'package:news_app/widgets/news_item.dart';
 import 'package:news_app/widgets/news_item_horizontal.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import 'news_page_category.dart';
 
@@ -91,6 +93,7 @@ class _NewsPageState extends State<NewsPage> {
           SizedBox(
             height: 5,
           ),
+          //item for category
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
             height: 70,
@@ -103,13 +106,43 @@ class _NewsPageState extends State<NewsPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NewsPageCategory()));
+                              builder: (context) =>
+                                  NewsPageCategory(
+                                    categoryName:
+                                    widget.categories[index].categoryName,
+                                  )));
                     },
+                    child: CategoryItem(
+                        imgUrl: widget.categories[index].imgUrl,
+                        categoryName: widget.categories[index].categoryName),
+                  )
+                  ,
                   );
+                }),
+          ),
+          SizedBox(height: 10,),
+          //list article
+          Padding(padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text('Top Headline',
+              style: titleArticle.copyWith(
+                  fontSize: 18
+              ),),
+          ),
+          SizedBox(height: 10,),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: ListView.builder(itemCount: widget.articles.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return NewsItem(article: widget.articles[index]);
                 }),
           )
         ],
       ),
     );
+  }
+
+  String timeUntil(DateTime parse) {
+    return timeago.format(parse, allowFromNow: true, locale: 'id');
   }
 }
