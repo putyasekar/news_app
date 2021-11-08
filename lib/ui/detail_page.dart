@@ -105,6 +105,7 @@ class _DetailPageState extends State<DetailPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: 40,
@@ -124,7 +125,24 @@ class _DetailPageState extends State<DetailPage> {
                       },
                       icon: Icon(Icons.arrow_back),
                     ),
-                  )
+                  ),
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, 10),
+                              blurRadius: 50)
+                        ]),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.arrow_back),
+                    ),
+                  ),
                 ],
               ),
             )
