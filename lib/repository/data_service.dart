@@ -14,7 +14,6 @@ class News {
     String url = '$baseUrl/top-headlines?country=id&apiKey=$apiKey';
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
-      // if it success
       var data = jsonDecode(response.body);
       var result = data['articles'] as List;
       list = result.map<Article>((json) => Article.fromJson(json)).toList();
