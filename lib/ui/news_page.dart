@@ -25,8 +25,9 @@ class _NewsPageState extends State<NewsPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+          Padding(padding: EdgeInsets.only(
+              left: 20, right: 20, top: 20
+          ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -38,37 +39,27 @@ class _NewsPageState extends State<NewsPage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
                           image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://media-exp1.licdn.com/dms/image/C5603AQE01nSH7JQImA/profile-displayphoto-shrink_800_800/0/1617547764581?e=1640217600&v=beta&t=_o8ho8bTT2atGis_ipqJ_PmBYLxicag5ndTM3yoi0pA'),
-                              fit: BoxFit.cover)),
+                              image: NetworkImage('https://media-exp1.licdn.com/dms/image/C5603AQE01nSH7JQImA/profile-displayphoto-shrink_800_800/0/1617547764581?e=1640217600&v=beta&t=_o8ho8bTT2atGis_ipqJ_PmBYLxicag5ndTM3yoi0pA'),
+                              fit: BoxFit.cover
+                          )
+                      ),
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      '18 October 2021',
-                      style: authorDateArticle.copyWith(fontSize: 14),
-                    )
+                    SizedBox(width: 10,),
+                    Text('18 Oktober 2021', style: authorDateArticle.copyWith(
+                        fontSize: 14
+                    ),)
                   ],
                 ),
-                Icon(
-                  Icons.search,
-                  size: 24,
-                )
+                Icon(Icons.search, size: 24,)
               ],
             ),
           ),
-          SizedBox(
-            height: 8,
-          ),
+          SizedBox(height: 8,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              'Breaking News',
-              style: titleHome,
-            ),
+            child: Text('Breaking News', style: titleHome,),
           ),
-          //  this was TopHeadline's widget for horizontal item
+          //  ini merupakan widget TopHeadline untuk horizontal item
           Container(
             margin: EdgeInsets.all(20),
             height: 200,
@@ -76,73 +67,66 @@ class _NewsPageState extends State<NewsPage> {
                 itemCount: widget.articles.length,
                 scrollDirection: Axis.horizontal,
                 pageSnapping: true,
-                itemBuilder: (context, index) {
+                itemBuilder: (context, index){
                   return NewsHeadLine(article: widget.articles[index]);
-                }),
-          ),
-          SizedBox(
-            height: 5,
+                }
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              'Category',
-              style: titleArticle.copyWith(fontSize: 18),
-            ),
+            child: Text('Category',
+              style: titleArticle.copyWith(
+                  fontSize: 18
+              ),),
           ),
-          SizedBox(
-            height: 5,
-          ),
-          //item for category
+          SizedBox(height: 5,),
+          //ini item untuk category
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
             height: 70,
             child: ListView.builder(
                 itemCount: widget.categories.length,
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
+                itemBuilder: (context, index){
                   return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
+                    onTap: (){
+                      Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  NewsPageCategory(
-                                    categoryName:
-                                    widget.categories[index].categoryName,
-                                  )));
+                              builder: (context) => NewsPageCategory(
+                                categoryName: widget.categories[index].categoryName,
+                              )
+                          )
+                      );
                     },
                     child: CategoryItem(
                         imgUrl: widget.categories[index].imgUrl,
-                        categoryName: widget.categories[index].categoryName),
-                  )
-                  ,
+                        categoryName:widget.categories[index].categoryName ),
                   );
                 }),
           ),
-          SizedBox(height: 10,),
-          //list article
-          Padding(padding: EdgeInsets.symmetric(horizontal: 20),
+          SizedBox(height: 5),
+          //  ini list article
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text('Top Headline',
               style: titleArticle.copyWith(
                   fontSize: 18
               ),),
           ),
           SizedBox(height: 10,),
+          //  ini list article nya
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
-            child: ListView.builder(itemCount: widget.articles.length,
+            child: ListView.builder(
+                itemCount: widget.articles.length,
                 shrinkWrap: true,
-                itemBuilder: (context, index) {
+                itemBuilder: (context,index){
                   return NewsItem(article: widget.articles[index]);
-                }),
+                }
+            ),
           )
         ],
       ),
     );
-  }
-
-  String timeUntil(DateTime parse) {
-    return timeago.format(parse, allowFromNow: true, locale: 'id');
   }
 }
