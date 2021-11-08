@@ -35,6 +35,7 @@ class _DetailPageState extends State<DetailPage> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
                           height: 24,
@@ -86,12 +87,46 @@ class _DetailPageState extends State<DetailPage> {
                               ],
                             )
                           ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          widget.article.content,
+                          textAlign: TextAlign.left,
+                          style: detailArticle.copyWith(fontSize: 16),
                         )
                       ],
                     ),
                   ),
                 )
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              child: Row(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, 10),
+                              blurRadius: 50)
+                        ]),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back),
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
