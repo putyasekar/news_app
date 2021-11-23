@@ -44,7 +44,7 @@ class _NewsPageCategoryState extends State<NewsPageCategory> {
             margin: EdgeInsets.only(left: 30),
             alignment: Alignment.topLeft,
             child: Text(
-              widget.categoryName + "News",
+              widget.categoryName + " News",
               style: titleHome,
             ),
           ),
