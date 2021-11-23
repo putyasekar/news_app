@@ -20,13 +20,15 @@ class _NewsPageCategoryState extends State<NewsPageCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(builder: (context, snapshot) {
-        return snapshot.data != null
-            ? _listNewsCategory(snapshot.data as List<Article>)
-            : Center(
-                child: CircularProgressIndicator(),
-              );
-      }),
+      body: FutureBuilder(
+          future: requestByCategory.getNewsByCategory(widget.categoryName),
+          builder: (context, snapshot) {
+            return snapshot.data != null
+                ? _listNewsCategory(snapshot.data as List<Article>)
+                : Center(
+                    child: CircularProgressIndicator(),
+                  );
+          }),
     );
   }
 
@@ -47,13 +49,14 @@ class _NewsPageCategoryState extends State<NewsPageCategory> {
             ),
           ),
           Container(
-              height: MediaQuery.of(context).size.height,
-              margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-              child: ListView.builder(
-                  itemCount: articles.length,
-                  itemBuilder: (context, index) {
-                    return NewsItem(article: articles[index]);
-                  }))
+            height: MediaQuery.of(context).size.height,
+            margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            child: ListView.builder(
+                itemCount: articles.length,
+                itemBuilder: (context, index) {
+                  return NewsItem(article: articles[index]);
+                }),
+          )
         ],
       ),
     ));
